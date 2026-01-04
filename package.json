@@ -1,11 +1,15 @@
 {
-  "name": "whatsapp na timnasa",
+  "name": "timnasa-chat",
   "version": "1.0.0",
   "main": "server.js",
-  "scripts": { "start": "node server.js" },
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "express": "^4.18.2",
-    "http": "^0.0.1-security",
     "socket.io": "^4.7.2",
     "mongoose": "^7.5.0",
     "bcrypt": "^5.1.1",
