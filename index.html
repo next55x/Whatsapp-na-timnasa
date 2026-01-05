@@ -5,87 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMNASA AZAM TV UI</title>
     <style>
-        body {
-            background-color: #000;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        /* Login Screen */
-        #login-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        #login-overlay input {
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #004a99;
-            background: #111;
-            color: white;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        /* Player */
+        body { background-color: #000; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; }
+        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; }
+        #login-overlay input { padding: 12px; border-radius: 8px; border: 1px solid #004a99; background: #111; color: white; text-align: center; margin-bottom: 10px; }
+        
+        /* Sehemu ya Video */
         .video-player {
             width: 100%;
-            height: 200px;
+            height: 250px; /* Aliongeza kidogo ukubwa */
             background-color: #050505;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             border-bottom: 2px solid #004a99;
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        /* Grid ya Channels */
-        .app-drawer {
-            height: calc(100vh - 200px);
-            overflow-y: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px 10px;
-            padding: 20px 15px;
-            padding-bottom: 100px;
-        }
-
-        .app-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 18px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            border: 1px solid #333;
-            font-size: 24px;
         }
 
-        .app-label {
-            font-size: 10px;
-            margin-top: 5px;
-            color: #bbb;
-            font-weight: bold;
+        iframe, video {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
+
+        .app-drawer { height: calc(100vh - 250px); overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 10px; padding: 20px 15px; padding-bottom: 100px; }
+        .app-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; }
+        .icon-box { width: 60px; height: 60px; border-radius: 18px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #333; font-size: 24px; }
+        .app-label { font-size: 10px; margin-top: 5px; color: #bbb; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -97,103 +44,49 @@
     </div>
 
     <div class="video-player" id="player">
-        <div id="videoText" style="text-align: center;">
+        <div id="videoContent" style="text-align: center; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <span style="font-size: 30px;">📡</span><br>
-            CHAGUA CHANNEL
+            CHAGUA CHANNEL ILI KUANGALIA
         </div>
     </div>
 
     <div class="app-drawer">
-        <div class="app-item" onclick="play('Azam One', '#004a99')">
+        <div class="app-item" onclick="play('Azam One', 'https://www.youtube.com/embed/LIVE_ID_HAPA')">
             <div class="icon-box" style="background: #004a99;">📺</div>
             <div class="app-label">Azam One</div>
         </div>
-        <div class="app-item" onclick="play('Azam Two', '#ff8c00')">
+
+        <div class="app-item" onclick="play('Azam Two', 'LINK_YA_VIDEO_HAPA')">
             <div class="icon-box" style="background: #ff8c00;">🔥</div>
             <div class="app-label">Azam Two</div>
         </div>
-        <div class="app-item" onclick="play('Sinema Zetu', '#e11')">
-            <div class="icon-box" style="background: #e11;">🎬</div>
-            <div class="app-label">Sinema Zetu</div>
-        </div>
-        <div class="app-item" onclick="play('Azam Sports 1', '#222')">
-            <div class="icon-box" style="background: #222;">⚽</div>
-            <div class="app-label">Sports 1</div>
-        </div>
-        <div class="app-item" onclick="play('Azam Sports 2', '#222')">
-            <div class="icon-box" style="background: #222;">🏆</div>
-            <div class="app-label">Sports 2</div>
-        </div>
-        <div class="app-item" onclick="play('Azam Sports 3', '#222')">
-            <div class="icon-box" style="background: #222;">🥇</div>
-            <div class="app-label">Sports 3</div>
-        </div>
 
-        <div class="app-item" onclick="play('UTV', '#008080')">
-            <div class="icon-box" style="background: #008080;">🌍</div>
-            <div class="app-label">UTV</div>
-        </div>
-        <div class="app-item" onclick="play('TBC 1', '#000080')">
-            <div class="icon-box" style="background: #000080;">🇹🇿</div>
-            <div class="app-label">TBC 1</div>
-        </div>
-        <div class="app-item" onclick="play('ITV', '#111')">
+        <div class="app-item" onclick="play('ITV', 'LINK_YA_ITV_HAPA')">
             <div class="icon-box" style="background: #111;">💎</div>
             <div class="app-label">ITV</div>
         </div>
-        <div class="app-item" onclick="play('Clouds TV', '#ff0000')">
-            <div class="icon-box" style="background: #ff0000;">☁️</div>
-            <div class="app-label">Clouds TV</div>
+        
         </div>
-
-        <div class="app-item" onclick="play('Azam Imaan', '#006400')">
-            <div class="icon-box" style="background: #006400;">🕋</div>
-            <div class="app-label">Azam Imaan</div>
-        </div>
-        <div class="app-item" onclick="play('Upendo TV', '#ff1493')">
-            <div class="icon-box" style="background: #ff1493;">⛪</div>
-            <div class="app-label">Upendo TV</div>
-        </div>
-        <div class="app-item" onclick="play('Trace Mziki', '#ff1493')">
-            <div class="icon-box" style="background: #ff1493;">🎵</div>
-            <div class="app-label">Trace Mziki</div>
-        </div>
-
-        <div class="app-item" onclick="play('ZBC TV', '#333')">
-            <div class="icon-box" style="background: #333;">🎥</div>
-            <div class="app-label">ZBC TV</div>
-        </div>
-        <div class="app-item" onclick="play('Discovery', '#4b0082')">
-            <div class="icon-box" style="background: #4b0082;">🐾</div>
-            <div class="app-label">Discovery</div>
-        </div>
-        <div class="app-item" onclick="play('Kids TV', '#ffd700')">
-            <div class="icon-box" style="background: #ffd700;">🧸</div>
-            <div class="app-label">Kids TV</div>
-        </div>
-
-        <div class="app-item" onclick="play('Account', '#444')">
-            <div class="icon-box" style="background: #444;">💳</div>
-            <div class="app-label">Lipia</div>
-        </div>
-    </div>
 
     <script>
-        // Password yako hapa
         function checkPass() {
             const pass = document.getElementById('passInput').value;
-            if (pass === "timoth") { // Badilisha 1234 kuwa unavyotaka
+            if (pass === "1234") {
                 document.getElementById('login-overlay').style.display = 'none';
             } else {
                 alert("Password Sio Sahihi!");
             }
         }
 
-        function play(name, color) {
-            const player = document.getElementById('player');
-            const videoText = document.getElementById('videoText');
-            player.style.backgroundColor = color;
-            videoText.innerHTML = `<b style="font-size: 20px;">Mubashara: ${name}</b><br>Inapakia...`;
+        function play(name, link) {
+            const videoContent = document.getElementById('videoContent');
+            
+            // Hapa tunaweka Iframe ili ifungue link ya video
+            videoContent.innerHTML = `
+                <iframe src="${link}" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                </iframe>`;
         }
     </script>
 </body>
