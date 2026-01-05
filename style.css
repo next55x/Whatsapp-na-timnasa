@@ -1,0 +1,64 @@
+body {
+    background-color: #0d0d0d;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 10px;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.terminal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#output {
+    flex-grow: 1;
+    overflow-y: auto;
+    white-space: pre-wrap; /* Hii inaruhusu maandishi kujipanga vizuri */
+    margin-bottom: 10px;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 5px;
+}
+
+.user {
+    color: #00ffff; /* Rangi ya Cyan kwa jina la user */
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+input {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: inherit;
+    flex-grow: 1;
+    outline: none;
+}
+
+/* Rangi maalum */
+.green { color: #00ff00; }
+.white { color: #ffffff; }
+.yellow { color: #ffff00; }
+.red { color: #ff4444; }
+.blue { color: #4488ff; }
+
+/* Scrollbar nyembamba kwa simu */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #000; 
+}
+::-webkit-scrollbar-thumb {
+    background: #333; 
+}
