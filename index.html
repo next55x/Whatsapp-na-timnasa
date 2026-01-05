@@ -3,129 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azam TV Smart UI</title>
+    <title>TIMNASA - AZAM UI</title>
     <style>
         body {
-            background-color: #121212;
+            background-color: #000;
             color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            padding: 20px;
             display: flex;
             justify-content: center;
         }
 
-        /* Container inayofanana na kioo cha simu */
-        .phone-screen {
+        /* Container ya Apps */
+        .app-drawer {
             width: 100%;
-            max-width: 400px;
-            height: 90vh;
+            max-width: 450px;
+            height: 100vh;
             overflow-y: auto; /* Inaruhusu kupanda na kushuka */
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Mistari 4 kama kwenye picha yako */
-            gap: 20px 10px;
-            padding: 10px;
-            scrollbar-width: none; /* Oficha scrollbar */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px 10px;
+            padding: 40px 15px;
+            box-sizing: border-box;
         }
 
-        .phone-screen::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Muundo wa Icon na Jina */
         .app-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s;
+            text-decoration: none;
+            color: white;
         }
 
-        .app-item:active {
-            transform: scale(0.9); /* Inabonyezeka */
-        }
-
-        .icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px; /* Mithili ya icons za Samsung/Azam */
-            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+        /* Muonekano wa Icons za Azam */
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            border-radius: 20px; /* Inafanana na Samsung Galaxy icons */
+            background-color: #1a1a1a;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            font-size: 24px;
+            margin-bottom: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            overflow: hidden;
             border: 1px solid #333;
         }
 
-        .app-name {
-            font-size: 11px;
-            color: #e0e0e0;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 100%;
+        .icon-box img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
         }
 
-        /* Rangi maalum kwa baadhi ya icons */
-        .azam-blue { background: linear-gradient(135deg, #004a99, #007bff); }
-        .azam-orange { background: linear-gradient(135deg, #ff8c00, #ffaa00); }
+        .app-label {
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Oficha scrollbar kwa muonekano safi */
+        .app-drawer::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="phone-screen">
+    <div class="app-drawer">
         <div class="app-item">
-            <div class="icon azam-blue">📺</div>
-            <div class="app-name">Azam One</div>
+            <div class="icon-box" style="background: #004a99;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Azam_TV_logo.png/1200px-Azam_TV_logo.png" alt="Azam">
+            </div>
+            <div class="app-label">Azam One</div>
         </div>
+
         <div class="app-item">
-            <div class="icon azam-orange">🔥</div>
-            <div class="app-name">Azam Two</div>
+            <div class="icon-box" style="background: #e11;">
+                <span style="font-weight: bold; font-size: 20px;">SZ</span>
+            </div>
+            <div class="app-label">Sinema Zetu</div>
         </div>
+
         <div class="app-item">
-            <div class="icon" style="background: #e11;">⚽</div>
-            <div class="app-name">Azam Sports</div>
+            <div class="icon-box" style="background: #222;">
+                <img src="https://img.icons8.com/color/96/football.png" alt="Sports">
+            </div>
+            <div class="app-label">Azam Sports HD</div>
         </div>
+
         <div class="app-item">
-            <div class="icon" style="background: #222;">🎬</div>
-            <div class="app-name">Sinema Zetu</div>
+            <div class="icon-box" style="background: #008080;">
+                <span style="font-weight: bold;">UTV</span>
+            </div>
+            <div class="app-label">UTV Tanzania</div>
         </div>
+
         <div class="app-item">
-            <div class="icon" style="background: #008080;">🌍</div>
-            <div class="app-name">UTV</div>
+            <div class="icon-box" style="background: #006400;">
+                <img src="https://img.icons8.com/color/96/mosque.png" alt="Imaan">
+            </div>
+            <div class="app-label">Azam Imaan</div>
         </div>
+
         <div class="app-item">
-            <div class="icon" style="background: #4b0082;">🎥</div>
-            <div class="app-name">Azam Movies</div>
+            <div class="icon-box" style="background: #ff1493;">
+                <img src="https://img.icons8.com/color/96/music-store.png" alt="Trace">
+            </div>
+            <div class="app-label">Trace Mziki</div>
         </div>
+
         <div class="app-item">
-            <div class="icon" style="background: #ffd700;">🦁</div>
-            <div class="app-name">Animal Planet</div>
+            <div class="icon-box" style="background: #444;">
+                <img src="https://img.icons8.com/fluency/96/settings.png" alt="Setup">
+            </div>
+            <div class="app-label">Decoder Setup</div>
         </div>
+
         <div class="app-item">
-            <div class="icon" style="background: #1d9bf0;">📰</div>
-            <div class="app-name">BBC News</div>
+            <div class="icon-box" style="background: #ff8c00;">
+                <img src="https://img.icons8.com/fluency/96/wallet-pockets.png" alt="Pay">
+            </div>
+            <div class="app-label">Lipia Kifurushi</div>
         </div>
-        <div class="app-item">
-            <div class="icon" style="background: #444;">📡</div>
-            <div class="app-name">Decoder Settings</div>
-        </div>
-        <div class="app-item">
-            <div class="icon" style="background: #006400;">🕋</div>
-            <div class="app-name">Azam Imaan</div>
-        </div>
-        <div class="app-item">
-            <div class="icon" style="background: #ff1493;">🎶</div>
-            <div class="app-name">Trace Mziki</div>
-        </div>
-        <div class="app-item">
-            <div class="icon azam-blue">💳</div>
-            <div class="app-name">Lipia Azam</div>
-        </div>
+
         </div>
 
 </body>
