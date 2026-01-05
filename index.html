@@ -3,144 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMNASA TERMUX</title>
+    <title>Azam TV Smart UI</title>
     <style>
-        /* CSS STYLES - MUONEKANO */
         body {
-            background-color: #050505;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #121212;
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 10px;
-            height: 100vh;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        #terminal-window {
-            flex-grow: 1;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            padding-bottom: 20px;
-            word-wrap: break-word;
+            justify-content: center;
         }
 
-        .input-area {
-            display: flex;
-            align-items: center;
-            background-color: #111;
+        /* Container inayofanana na kioo cha simu */
+        .phone-screen {
+            width: 100%;
+            max-width: 400px;
+            height: 90vh;
+            overflow-y: auto; /* Inaruhusu kupanda na kushuka */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Mistari 4 kama kwenye picha yako */
+            gap: 20px 10px;
             padding: 10px;
-            border-radius: 5px;
+            scrollbar-width: none; /* Oficha scrollbar */
+        }
+
+        .phone-screen::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Muundo wa Icon na Jina */
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .app-item:active {
+            transform: scale(0.9); /* Inabonyezeka */
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px; /* Mithili ya icons za Samsung/Azam */
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 24px;
             border: 1px solid #333;
         }
 
-        .prompt {
-            color: #00ffff;
-            margin-right: 8px;
-            font-weight: bold;
+        .app-name {
+            font-size: 11px;
+            color: #e0e0e0;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
             white-space: nowrap;
+            width: 100%;
         }
 
-        input {
-            background: transparent;
-            border: none;
-            color: #ffffff;
-            font-family: inherit;
-            font-size: 16px;
-            flex-grow: 1;
-            outline: none;
-        }
-
-        /* Rangi za maandishi */
-        .cmd-output { margin-bottom: 10px; line-height: 1.5; }
-        .yellow { color: #ffff00; }
-        .red { color: #ff4444; }
-        .white { color: #ffffff; }
-        .gray { color: #888888; }
-        .blue { color: #4488ff; }
+        /* Rangi maalum kwa baadhi ya icons */
+        .azam-blue { background: linear-gradient(135deg, #004a99, #007bff); }
+        .azam-orange { background: linear-gradient(135deg, #ff8c00, #ffaa00); }
     </style>
 </head>
 <body>
 
-    <div id="terminal-window">
-        <div class="cmd-output">
-            <span class="white">TIMNASA TERMUX [v3.0 Stable]</span><br>
-            <span class="gray">Connected to Vercel Cloud... OK</span><br>
-            <br>
-            Welcome User. Type <span class="yellow">'help'</span> to start.<br>
-            ----------------------------------------
+    <div class="phone-screen">
+        <div class="app-item">
+            <div class="icon azam-blue">📺</div>
+            <div class="app-name">Azam One</div>
         </div>
-    </div>
+        <div class="app-item">
+            <div class="icon azam-orange">🔥</div>
+            <div class="app-name">Azam Two</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #e11;">⚽</div>
+            <div class="app-name">Azam Sports</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #222;">🎬</div>
+            <div class="app-name">Sinema Zetu</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #008080;">🌍</div>
+            <div class="app-name">UTV</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #4b0082;">🎥</div>
+            <div class="app-name">Azam Movies</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #ffd700;">🦁</div>
+            <div class="app-name">Animal Planet</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #1d9bf0;">📰</div>
+            <div class="app-name">BBC News</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #444;">📡</div>
+            <div class="app-name">Decoder Settings</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #006400;">🕋</div>
+            <div class="app-name">Azam Imaan</div>
+        </div>
+        <div class="app-item">
+            <div class="icon" style="background: #ff1493;">🎶</div>
+            <div class="app-name">Trace Mziki</div>
+        </div>
+        <div class="app-item">
+            <div class="icon azam-blue">💳</div>
+            <div class="app-name">Lipia Azam</div>
+        </div>
+        </div>
 
-    <div class="input-area">
-        <span class="prompt">galaxy-a04s:~$</span>
-        <input type="text" id="cmdInput" autofocus autocomplete="off">
-    </div>
-
-    <script>
-        // JAVASCRIPT LOGIC - AKILI
-        const input = document.getElementById("cmdInput");
-        const output = document.getElementById("terminal-window");
-
-        const commands = {
-            'help': `
-                <div class="yellow">AVAILABLE COMMANDS:</div>
-                <span class="white">ls</span> - List directory files<br>
-                <span class="white">clear</span> - Clear screen<br>
-                <span class="white">logo-gen</span> - Create Logo Idea<br>
-                <span class="white">scam-alert</span> - WhatsApp Security Check<br>
-                <span class="white">about</span> - System Info
-            `,
-            'ls': `
-                <span class="blue">DCIM/</span>&nbsp;&nbsp;<span class="blue">Music/</span>&nbsp;&nbsp;<span class="blue">Downloads/</span><br>
-                index.html<br>
-                vercel.json
-            `,
-            'about': `
-                Host: Vercel Static Network<br>
-                Owner: TIMNASA<br>
-                Device: Samsung Galaxy A04s
-            `,
-            'scam-alert': `
-                <div class="red">[!] WHATSAPP SECURITY WARNING</div>
-                Running analysis...<br>
-                1. Never share your 6-digit SMS code.<br>
-                2. Official WhatsApp never asks for money to verify.<br>
-                3. Beware of links like "Free Data 50GB".<br>
-                <span class="yellow">Status: System Secure.</span>
-            `,
-            'logo-gen': `
-                <span class="white">--- LOGO GENERATOR v1 ---</span><br>
-                Generating concept for 'TIMNASA'...<br>
-                [██████████] 100%<br>
-                <span class="green">Done! Open Canva or AI Tool to visualize.</span>
-            `
-        };
-
-        input.addEventListener("keydown", function(e) {
-            if (e.key === "Enter") {
-                const cmd = this.value.trim().toLowerCase();
-                
-                // Onyesha user ameandika nini
-                output.innerHTML += `<div><span class="prompt">galaxy-a04s:~$</span> <span class="white">${this.value}</span></div>`;
-
-                // Logic
-                if (cmd === "clear") {
-                    output.innerHTML = "";
-                } else if (commands[cmd]) {
-                    output.innerHTML += `<div class="cmd-output">${commands[cmd]}</div>`;
-                } else if (cmd !== "") {
-                    output.innerHTML += `<div class="cmd-output red">Command not found: ${cmd}</div>`;
-                }
-
-                this.value = "";
-                output.scrollTop = output.scrollHeight;
-            }
-        });
-
-        // Focus input ukibonyeza popote
-        document.body.addEventListener('click', () => input.focus());
-    </script>
 </body>
 </html>
