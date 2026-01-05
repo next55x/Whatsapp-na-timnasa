@@ -4,28 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMNASA TERMUX</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS STYLES - MUONEKANO */
+        body {
+            background-color: #050505;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 10px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        #terminal-window {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            word-wrap: break-word;
+        }
+
+        .input-area {
+            display: flex;
+            align-items: center;
+            background-color: #111;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+
+        .prompt {
+            color: #00ffff;
+            margin-right: 8px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 16px;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        /* Rangi za maandishi */
+        .cmd-output { margin-bottom: 10px; line-height: 1.5; }
+        .yellow { color: #ffff00; }
+        .red { color: #ff4444; }
+        .white { color: #ffffff; }
+        .gray { color: #888888; }
+        .blue { color: #4488ff; }
+    </style>
 </head>
 <body>
 
-    <div class="terminal-container">
-        <div id="output">
-            <div class="header">
-                <span class="green">TIMNASA TERMUX v2.0 [Secure Shell]</span><br>
-                <span class="white">(c) 2026 Timnasa Technology.</span><br>
-                <br>
-                Systems Online... <span class="green">OK</span><br>
-                Type <span class="yellow">'help'</span> to view commands.<br>
-                -------------------------------------------------
-            </div>
-        </div>
-
-        <div class="input-line">
-            <span class="user">galaxy-a04s@timnasa:~$</span>
-            <input type="text" id="commandInput" autocomplete="off" autofocus>
+    <div id="terminal-window">
+        <div class="cmd-output">
+            <span class="white">TIMNASA TERMUX [v3.0 Stable]</span><br>
+            <span class="gray">Connected to Vercel Cloud... OK</span><br>
+            <br>
+            Welcome User. Type <span class="yellow">'help'</span> to start.<br>
+            ----------------------------------------
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="input-area">
+        <span class="prompt">galaxy-a04s:~$</span>
+        <input type="text" id="cmdInput" autofocus autocomplete="off">
+    </div>
+
+    <script>
+        // JAVASCRIPT LOGIC - AKILI
+        const input = document.getElementById("cmdInput");
+        const output = document.getElementById("terminal-window");
+
+        const commands = {
+            'help': `
+                <div class="yellow">AVAILABLE COMMANDS:</div>
+                <span class="white">ls</span> - List directory files<br>
+                <span class="white">clear</span> - Clear screen<br>
+                <span class="white">logo-gen</span> - Create Logo Idea<br>
+                <span class="white">scam-alert</span> - WhatsApp Security Check<br>
+                <span class="white">about</span> - System Info
+            `,
+            'ls': `
+                <span class="blue">DCIM/</span>&nbsp;&nbsp;<span class="blue">Music/</span>&nbsp;&nbsp;<span class="blue">Downloads/</span><br>
+                index.html<br>
+                vercel.json
+            `,
+            'about': `
+                Host: Vercel Static Network<br>
+                Owner: TIMNASA<br>
+                Device: Samsung Galaxy A04s
+            `,
+            'scam-alert': `
+                <div class="red">[!] WHATSAPP SECURITY WARNING</div>
+                Running analysis...<br>
+                1. Never share your 6-digit SMS code.<br>
+                2. Official WhatsApp never asks for money to verify.<br>
+                3. Beware of links like "Free Data 50GB".<br>
+                <span class="yellow">Status: System Secure.</span>
+            `,
+            'logo-gen': `
+                <span class="white">--- LOGO GENERATOR v1 ---</span><br>
+                Generating concept for 'TIMNASA'...<br>
+                [██████████] 100%<br>
+                <span class="green">Done! Open Canva or AI Tool to visualize.</span>
+            `
+        };
+
+        input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const cmd = this.value.trim().toLowerCase();
+                
+                // Onyesha user ameandika nini
+                output.innerHTML += `<div><span class="prompt">galaxy-a04s:~$</span> <span class="white">${this.value}</span></div>`;
+
+                // Logic
+                if (cmd === "clear") {
+                    output.innerHTML = "";
+                } else if (commands[cmd]) {
+                    output.innerHTML += `<div class="cmd-output">${commands[cmd]}</div>`;
+                } else if (cmd !== "") {
+                    output.innerHTML += `<div class="cmd-output red">Command not found: ${cmd}</div>`;
+                }
+
+                this.value = "";
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+
+        // Focus input ukibonyeza popote
+        document.body.addEventListener('click', () => input.focus());
+    </script>
 </body>
 </html>
