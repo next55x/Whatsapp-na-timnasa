@@ -1,51 +1,36 @@
-// Orodha ya Maudhui (Picha na Maandishi)
-const maudhui = [
-    { picha: "https://picsum.photos/400/700?random=1", jina: "Maisha ya Mars 2050 #space" },
-    { picha: "https://picsum.photos/400/700?random=2", jina: "Teknolojia Mpya ya Timnasa" },
-    { picha: "https://picsum.photos/400/700?random=3", jina: "Jinsi ya kutumia Teleportation" },
-    { picha: "https://picsum.photos/400/700?random=4", jina: "Funny Robots in 2050 😂" },
-    { picha: "https://picsum.photos/400/700?random=5", jina: "Muziki wa Baadaye #2050" },
-    { picha: "https://picsum.photos/400/700?random=6", jina: "Safari ya kwenda Mwezin" }
+const videoData = [
+    { url: "https://v1.exhibit.st/sample-1.mp4", title: "Future City 2050 #Timnasa" },
+    { url: "https://v1.exhibit.st/sample-2.mp4", title: "Robot Dance #Funny" },
+    { url: "https://v1.exhibit.st/sample-3.mp4", title: "New Galaxy Discovery 🚀" },
+    { url: "https://v1.exhibit.st/sample-4.mp4", title: "AI Life is Real #2050" }
 ];
 
-const grid = document.getElementById('mainGrid');
+const container = document.getElementById('videoContainer');
 
-// Function ya kutengeneza kadi mara ya kwanza
-function tengenezaKadi() {
-    grid.innerHTML = ''; // Safisha kwanza
-    for (let i = 0; i < 4; i++) {
-        const item = maudhui[Math.floor(Math.random() * maudhui.length)];
-        grid.innerHTML += `
-            <div class="short-card">
-                <img src="${item.picha}" class="thumbnail">
-                <div class="overlay">
-                    <p class="title">${item.jina}</p>
-                </div>
+function loadVideos() {
+    container.innerHTML = '';
+    videoData.forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+        card.innerHTML = `
+            <video src="${video.url}" autoplay muted loop playsinline></video>
+            <div class="side-buttons">
+                <span>🤍</span>
+                <span>💬</span>
+                <span>🔄</span>
+            </div>
+            <div class="video-info">
+                <p>${video.title}</p>
             </div>
         `;
-    }
-}
-
-// Function ya ku-update picha na maandishi
-function fanyaUpdate() {
-    const kadiZote = document.querySelectorAll('.short-card');
-    
-    kadiZote.forEach((kadi) => {
-        const img = kadi.querySelector('.thumbnail');
-        const title = kadi.querySelector('.title');
-        const randomData = maudhui[Math.floor(Math.random() * maudhui.length)];
-
-        // Fade out effect
-        img.style.opacity = "0";
-        
-        setTimeout(() => {
-            img.src = randomData.picha + "&t=" + new Date().getTime(); // "t" inahakikisha picha inabadilika kweli
-            title.innerText = randomData.jina;
-            img.style.opacity = "1";
-        }, 800);
+        container.appendChild(card);
     });
 }
 
-// Anza
-tengenezaKadi();
-setInterval(fanyaUpdate, 5000); // Kila sekunde 5 inapata update
+// Hii inabadilisha video kila baada ya muda (Simulated Update)
+setInterval(() => {
+    console.log("Updating content...");
+    // Hapa unaweza kuweka kodi ya kuvuta video mpya
+}, 10000);
+
+window.onload = loadVideos;
