@@ -1,64 +1,118 @@
 body {
-    background-color: #0d0d0d;
-    color: #00ff00;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #0f0f0f;
+    color: white;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 10px;
-    height: 100vh;
-    overflow: hidden;
-    font-size: 14px;
+    padding-bottom: 70px; /* Nafasi kwa ajili ya menyu ya chini */
 }
 
-.terminal-container {
+/* Header */
+.header {
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    background: #0f0f0f;
+    z-index: 100;
 }
 
-#output {
-    flex-grow: 1;
-    overflow-y: auto;
-    white-space: pre-wrap; /* Hii inaruhusu maandishi kujipanga vizuri */
-    margin-bottom: 10px;
-}
-
-.input-line {
+.logo-area {
     display: flex;
     align-items: center;
-    border-top: 1px solid #333;
-    padding-top: 5px;
+    gap: 10px;
 }
 
-.user {
-    color: #00ffff; /* Rangi ya Cyan kwa jina la user */
-    margin-right: 8px;
+.app-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.header h1 {
+    font-size: 18px;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* Shorts Label */
+.shorts-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px;
     font-weight: bold;
+    font-size: 18px;
 }
 
-input {
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: inherit;
-    flex-grow: 1;
-    outline: none;
+/* Gridi ya Shorts */
+.shorts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0 8px;
 }
 
-/* Rangi maalum */
-.green { color: #00ff00; }
-.white { color: #ffffff; }
-.yellow { color: #ffff00; }
-.red { color: #ff4444; }
-.blue { color: #4488ff; }
+.short-card {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #222;
+}
 
-/* Scrollbar nyembamba kwa simu */
-::-webkit-scrollbar {
-    width: 5px;
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-::-webkit-scrollbar-track {
-    background: #000; 
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
-::-webkit-scrollbar-thumb {
-    background: #333; 
+
+.overlay p {
+    font-size: 13px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #333;
+}
+
+.nav-item {
+    text-align: center;
+    font-size: 20px;
+    color: #aaa;
+}
+
+.nav-item p {
+    font-size: 10px;
+    margin: 2px 0 0 0;
+}
+
+.plus {
+    font-size: 35px;
+    color: white;
+}
+
+.user-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }
