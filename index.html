@@ -3,91 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMNASA AZAM TV UI</title>
-    <style>
-        body { background-color: #000; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; }
-        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; }
-        #login-overlay input { padding: 12px; border-radius: 8px; border: 1px solid #004a99; background: #111; color: white; text-align: center; margin-bottom: 10px; }
-        
-        /* Sehemu ya Video */
-        .video-player {
-            width: 100%;
-            height: 250px; /* Aliongeza kidogo ukubwa */
-            background-color: #050505;
-            border-bottom: 2px solid #004a99;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        iframe, video {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .app-drawer { height: calc(100vh - 250px); overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px 10px; padding: 20px 15px; padding-bottom: 100px; }
-        .app-item { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; }
-        .icon-box { width: 60px; height: 60px; border-radius: 18px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #333; font-size: 24px; }
-        .app-label { font-size: 10px; margin-top: 5px; color: #bbb; font-weight: bold; }
-    </style>
+    <title>Timnasa YouTube 2050</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://files.catbox.moe/qsu6xe.jpg">
 </head>
 <body>
 
-    <div id="login-overlay">
-        <h2 style="color: #004a99;">TIMNASA ADMIN</h2>
-        <input type="password" id="passInput" placeholder="Ingiza Password">
-        <button onclick="checkPass()" style="padding: 8px 20px; background: #004a99; color: white; border: none; border-radius: 5px;">INGIA</button>
+    <header class="header">
+        <div class="logo-area">
+            <img src="https://files.catbox.moe/qsu6xe.jpg" alt="Icon" class="app-icon">
+            <h1>Timnasa YouTube 2050</h1>
+        </div>
+        <div class="header-icons">
+            <span>🔍</span>
+        </div>
+    </header>
+
+    <div class="shorts-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Youtube_shorts_icon.svg" width="20">
+        <span>Shorts</span>
     </div>
 
-    <div class="video-player" id="player">
-        <div id="videoContent" style="text-align: center; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <span style="font-size: 30px;">📡</span><br>
-            CHAGUA CHANNEL ILI KUANGALIA
-        </div>
-    </div>
-
-    <div class="app-drawer">
-        <div class="app-item" onclick="play('Azam One', 'https://www.youtube.com/embed/LIVE_ID_HAPA')">
-            <div class="icon-box" style="background: #004a99;">📺</div>
-            <div class="app-label">Azam One</div>
+    <main class="shorts-grid">
+        <div class="short-card">
+            <img src="https://files.catbox.moe/qsu6xe.jpg" class="thumbnail">
+            <div class="overlay">
+                <p>The man in the house #funny #2050</p>
+            </div>
         </div>
 
-        <div class="app-item" onclick="play('Azam Two', 'LINK_YA_VIDEO_HAPA')">
-            <div class="icon-box" style="background: #ff8c00;">🔥</div>
-            <div class="app-label">Azam Two</div>
+        <div class="short-card">
+            <img src="https://files.catbox.moe/qsu6xe.jpg" class="thumbnail">
+            <div class="overlay">
+                <p>HUMAN POWERS #teleportation</p>
+            </div>
         </div>
 
-        <div class="app-item" onclick="play('ITV', 'LINK_YA_ITV_HAPA')">
-            <div class="icon-box" style="background: #111;">💎</div>
-            <div class="app-label">ITV</div>
-        </div>
-        
+        <div class="short-card">
+            <img src="https://files.catbox.moe/qsu6xe.jpg" class="thumbnail">
+            <div class="overlay">
+                <p>Jëli - Amadeus feat Wally Seck</p>
+            </div>
         </div>
 
-    <script>
-        function checkPass() {
-            const pass = document.getElementById('passInput').value;
-            if (pass === "1234") {
-                document.getElementById('login-overlay').style.display = 'none';
-            } else {
-                alert("Password Sio Sahihi!");
-            }
-        }
+        <div class="short-card">
+            <img src="https://files.catbox.moe/qsu6xe.jpg" class="thumbnail">
+            <div class="overlay">
+                <p>Top 3 funny video #ricoanimation</p>
+            </div>
+        </div>
+    </main>
 
-        function play(name, link) {
-            const videoContent = document.getElementById('videoContent');
-            
-            // Hapa tunaweka Iframe ili ifungue link ya video
-            videoContent.innerHTML = `
-                <iframe src="${link}" 
-                        allow="autoplay; encrypted-media" 
-                        allowfullscreen>
-                </iframe>`;
-        }
-    </script>
+    <nav class="bottom-nav">
+        <div class="nav-item"><span>🏠</span><p>Home</p></div>
+        <div class="nav-item"><span>📱</span><p>Shorts</p></div>
+        <div class="nav-item plus"><span>+</span></div>
+        <div class="nav-item"><span>🔔</span><p>Subscriptions</p></div>
+        <div class="nav-item"><img src="https://files.catbox.moe/qsu6xe.jpg" class="user-icon"><p>You</p></div>
+    </nav>
+
 </body>
 </html>
