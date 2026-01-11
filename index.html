@@ -3,217 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimnasaTech | Obfuscate Open & Close</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: url('https://files.catbox.moe/x4x5xn.jpg') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 35px;
-            border-radius: 25px;
-            width: 100%;
-            max-width: 700px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            letter-spacing: 3px;
-            background: linear-gradient(to right, #00d2ff, #9d50bb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            font-size: 0.85rem;
-            color: #ffd700;
-            margin-bottom: 25px;
-            display: block;
-        }
-
-        textarea {
-            width: 100%;
-            height: 140px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            color: #00ffcc;
-            font-family: 'Courier New', monospace;
-            margin-bottom: 15px;
-            outline: none;
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            border: none;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            color: white;
-            text-transform: uppercase;
-        }
-
-        .btn-encrypt { background: linear-gradient(45deg, #00c6ff, #0072ff); }
-        .btn-decrypt { background: linear-gradient(45deg, #f093fb, #f5576c); }
-        
-        /* New Utility Buttons Style */
-        .util-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .btn-copy { background: #28a745; font-size: 0.8rem; }
-        .btn-clear { background: #6c757d; font-size: 0.8rem; }
-
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
-
-        #resultWrapper {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .footer {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .contact-btn {
-            text-decoration: none;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
-        }
-        .whatsapp:hover { background: #25d366; }
-    </style>
+    <title>TIMNASA APK DOWNLOADER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <header>
+        <div class="logo">𝚻𝚰𝚳𝚴𝚫𝐒𝚫 <span>STORE</span></div>
+    </header>
 
-    <audio id="audioPlayer" loop>
-        <source src="https://files.catbox.moe/lqx6sp.mp3" type="audio/mpeg">
-    </audio>
-
-    <div class="glass-panel">
-        <h1>TIMNASA TECH</h1>
-        <span class="subtitle">timoth@timnasa.com | Obfuscate Open & Close</span>
-
-        <textarea id="inputCode" placeholder="Enter code here..."></textarea>
-        
-        <input type="password" id="key" placeholder="Security Password">
-        
-        <div class="button-group">
-            <button onclick="process('encrypt')" class="btn btn-encrypt">Encrypt</button>
-            <button onclick="process('decrypt')" class="btn btn-decrypt">Decrypt</button>
-        </div>
-
-        <div id="resultWrapper">
-            <p style="text-align:left; font-size: 0.75rem; color: #ffd700; margin-bottom: 5px;">RESULT:</p>
-            <textarea id="outputCode" readonly></textarea>
-            
-            <div class="util-group">
-                <button onclick="copyToClipboard()" class="btn btn-copy">Copy Result</button>
-                <button onclick="clearAll()" class="btn btn-clear">Clear All</button>
+    <main>
+        <section class="search-box">
+            <h1>Download Any Android App</h1>
+            <div class="input-group">
+                <input type="text" id="appInput" placeholder="Enter App Name (e.g., WhatsApp, TikTok)...">
+                <button onclick="searchApp()"><i class="fas fa-search"></i> Search</button>
             </div>
-        </div>
+        </section>
 
-        <div class="footer">
-            <a href="https://wa.me/255784766591" target="_blank" class="contact-btn whatsapp">WhatsApp</a>
-            <a href="mailto:timoth@timnasa.com" class="contact-btn">Email Owner</a>
-        </div>
-    </div>
+        <section id="resultArea" class="result-area">
+            </section>
+    </main>
 
-    <script>
-        const music = document.getElementById('audioPlayer');
-
-        function process(mode) {
-            music.play().catch(() => {});
-            const text = document.getElementById('inputCode').value;
-            const pass = document.getElementById('key').value;
-            const output = document.getElementById('outputCode');
-            const wrapper = document.getElementById('resultWrapper');
-
-            if (!text || !pass) { alert("Please fill all fields!"); return; }
-
-            try {
-                if (mode === 'encrypt') {
-                    output.value = CryptoJS.AES.encrypt(text, pass).toString();
-                } else {
-                    const bytes = CryptoJS.AES.decrypt(text, pass);
-                    const decoded = bytes.toString(CryptoJS.enc.Utf8);
-                    if (!decoded) throw new Error();
-                    output.value = decoded;
-                }
-                wrapper.style.display = 'block';
-            } catch (e) { alert("Wrong Password!"); }
-        }
-
-        function copyToClipboard() {
-            const output = document.getElementById('outputCode');
-            output.select();
-            document.execCommand("copy");
-            alert("Copied to clipboard!");
-        }
-
-        function clearAll() {
-            document.getElementById('inputCode').value = '';
-            document.getElementById('outputCode').value = '';
-            document.getElementById('key').value = '';
-            document.getElementById('resultWrapper').style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
