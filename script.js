@@ -1,36 +1,50 @@
-const videoData = [
-    { url: "https://v1.exhibit.st/sample-1.mp4", title: "Future City 2050 #Timnasa" },
-    { url: "https://v1.exhibit.st/sample-2.mp4", title: "Robot Dance #Funny" },
-    { url: "https://v1.exhibit.st/sample-3.mp4", title: "New Galaxy Discovery 🚀" },
-    { url: "https://v1.exhibit.st/sample-4.mp4", title: "AI Life is Real #2050" }
-];
+let count = 0;
 
-const container = document.getElementById('videoContainer');
+async function searchApp() {
+    const appName = document.getElementById('appInput').value;
+    const resultArea = document.getElementById('resultArea');
+    const loading = document.getElementById('loading');
 
-function loadVideos() {
-    container.innerHTML = '';
-    videoData.forEach(video => {
-        const card = document.createElement('div');
-        card.className = 'video-card';
-        card.innerHTML = `
-            <video src="${video.url}" autoplay muted loop playsinline></video>
-            <div class="side-buttons">
-                <span>🤍</span>
-                <span>💬</span>
-                <span>🔄</span>
-            </div>
-            <div class="video-info">
-                <p>${video.title}</p>
-            </div>
-        `;
-        container.appendChild(card);
-    });
+    if (!appName) return;
+
+    // Show loading
+    resultArea.innerHTML = "";
+    loading.classList.remove('hidden');
+
+    try {
+        const response = await fetch(`https://api.maher-zubair.tech/download/apk?id=${encodeURIComponent(appName)}`);
+        const data = await response.json();
+
+        loading.classList.add('hidden');
+
+        if (data.status === 200) {
+            const app = data.result;
+            // Update Admin Stats
+            count++;
+            document.getElementById('searchCount').innerText = count;
+            document.getElementById('lastApp').innerText = app.name;
+
+            resultArea.innerHTML = `
+                <div class="result-card">
+                    <img src="${app.icon}" class="app-icon" alt="icon">
+                    <h1 style="margin: 15px 0 5px 0;">${app.name}</h1>
+                    <p style="color: var(--play-green); font-weight: 500;">${app.developer}</p>
+                    <p style="color: var(--text-sub);">Size: ${app.size} • Verified Safe</p>
+                    <a href="${app.downloadLink}" class="download-btn">Install</a>
+                    <p style="margin-top: 20px; font-size: 14px; color: var(--text-sub);">
+                        This app is compatible with your device.
+                    </p>
+                </div>
+            `;
+        } else {
+            resultArea.innerHTML = "<p>App not found. Please check the spelling.</p>";
+        }
+    } catch (error) {
+        loading.classList.add('hidden');
+        resultArea.innerHTML = "<p>Connection error. Try again later.</p>";
+    }
 }
 
-// Hii inabadilisha video kila baada ya muda (Simulated Update)
-setInterval(() => {
-    console.log("Updating content...");
-    // Hapa unaweza kuweka kodi ya kuvuta video mpya
-}, 10000);
-
-window.onload = loadVideos;
+// Admin Panel Functions
+function showAdmin() { document.getElementById('adminPanel').classList.remove('hidden'); }
+function closeAdmin() { document.getElementById('adminPanel').classList.add('hidden'); }
