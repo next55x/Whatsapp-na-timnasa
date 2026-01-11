@@ -17,7 +17,6 @@
         }
 
         body {
-            /* Your custom wallpaper */
             background: url('https://files.catbox.moe/x4x5xn.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -25,34 +24,25 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
         }
 
-        /* Glassmorphism Container */
         .glass-panel {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
+            padding: 35px;
             border-radius: 25px;
             width: 100%;
             max-width: 700px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             color: white;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
             font-size: 2.2rem;
             letter-spacing: 3px;
-            margin-bottom: 5px;
             background: linear-gradient(to right, #00d2ff, #9d50bb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -61,105 +51,94 @@
 
         .subtitle {
             font-size: 0.85rem;
-            color: #ffd700; /* Gold for uniqueness */
-            margin-bottom: 30px;
+            color: #ffd700;
+            margin-bottom: 25px;
             display: block;
-            font-weight: 300;
         }
 
         textarea {
             width: 100%;
-            height: 150px;
+            height: 140px;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             padding: 15px;
             color: #00ffcc;
             font-family: 'Courier New', monospace;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             outline: none;
-            transition: 0.3s;
-        }
-
-        textarea:focus {
-            border-color: #00d2ff;
         }
 
         input[type="password"] {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border-radius: 12px;
             border: none;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             background: rgba(255, 255, 255, 0.9);
-            color: #1a1a1a;
-            font-weight: bold;
             text-align: center;
-            font-size: 1rem;
+            font-weight: bold;
         }
 
         .button-group {
             display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .btn {
             flex: 1;
-            padding: 15px;
+            padding: 14px;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
-            letter-spacing: 1px;
-            transition: 0.4s;
+            transition: 0.3s;
             color: white;
             text-transform: uppercase;
         }
 
         .btn-encrypt { background: linear-gradient(45deg, #00c6ff, #0072ff); }
         .btn-decrypt { background: linear-gradient(45deg, #f093fb, #f5576c); }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        
+        /* New Utility Buttons Style */
+        .util-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
         }
+        .btn-copy { background: #28a745; font-size: 0.8rem; }
+        .btn-clear { background: #6c757d; font-size: 0.8rem; }
+
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
 
         #resultWrapper {
             display: none;
-            margin-top: 20px;
-            animation: fadeIn 0.5s ease;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            animation: fadeIn 0.5s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .footer {
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
 
         .contact-btn {
-            display: inline-block;
             text-decoration: none;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 50px;
             font-size: 0.8rem;
-            margin: 5px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: 0.3s;
         }
-
-        .whatsapp { background: rgba(37, 211, 102, 0.2); border-color: #25d366; }
-        .whatsapp:hover { background: #25d366; color: black; }
-
-        .email { background: rgba(0, 210, 255, 0.2); border-color: #00d2ff; }
-        .email:hover { background: #00d2ff; color: black; }
-
+        .whatsapp:hover { background: #25d366; }
     </style>
 </head>
 <body>
@@ -172,9 +151,9 @@
         <h1>TIMNASA TECH</h1>
         <span class="subtitle">timoth@timnasa.com | Obfuscate Open & Close</span>
 
-        <textarea id="inputCode" placeholder="Paste your code or text here..."></textarea>
+        <textarea id="inputCode" placeholder="Enter code here..."></textarea>
         
-        <input type="password" id="key" placeholder="Enter Secret Encryption Key">
+        <input type="password" id="key" placeholder="Security Password">
         
         <div class="button-group">
             <button onclick="process('encrypt')" class="btn btn-encrypt">Encrypt</button>
@@ -182,13 +161,18 @@
         </div>
 
         <div id="resultWrapper">
-            <p style="text-align:left; font-size: 0.8rem; color: #00ffcc; margin-bottom: 5px;">OUTPUT:</p>
+            <p style="text-align:left; font-size: 0.75rem; color: #ffd700; margin-bottom: 5px;">RESULT:</p>
             <textarea id="outputCode" readonly></textarea>
+            
+            <div class="util-group">
+                <button onclick="copyToClipboard()" class="btn btn-copy">Copy Result</button>
+                <button onclick="clearAll()" class="btn btn-clear">Clear All</button>
+            </div>
         </div>
 
         <div class="footer">
-            <a href="https://wa.me/255784766591" target="_blank" class="contact-btn whatsapp">Chat on WhatsApp</a>
-            <a href="mailto:timoth@timnasa.com" class="contact-btn email">Contact Owner</a>
+            <a href="https://wa.me/255784766591" target="_blank" class="contact-btn whatsapp">WhatsApp</a>
+            <a href="mailto:timoth@timnasa.com" class="contact-btn">Email Owner</a>
         </div>
     </div>
 
@@ -196,35 +180,39 @@
         const music = document.getElementById('audioPlayer');
 
         function process(mode) {
-            // Start Music on click
-            music.play().catch(() => console.log("User interaction required for audio"));
-
+            music.play().catch(() => {});
             const text = document.getElementById('inputCode').value;
             const pass = document.getElementById('key').value;
             const output = document.getElementById('outputCode');
             const wrapper = document.getElementById('resultWrapper');
 
-            if (!text || !pass) {
-                alert("Please fill in both the code and the secret key!");
-                return;
-            }
+            if (!text || !pass) { alert("Please fill all fields!"); return; }
 
             try {
                 if (mode === 'encrypt') {
-                    const encrypted = CryptoJS.AES.encrypt(text, pass).toString();
-                    output.value = encrypted;
+                    output.value = CryptoJS.AES.encrypt(text, pass).toString();
                 } else {
                     const bytes = CryptoJS.AES.decrypt(text, pass);
-                    const decrypted = bytes.toString(CryptoJS.enc.Utf8);
-                    
-                    if (!decrypted) throw new Error();
-                    output.value = decrypted;
+                    const decoded = bytes.toString(CryptoJS.enc.Utf8);
+                    if (!decoded) throw new Error();
+                    output.value = decoded;
                 }
-                
                 wrapper.style.display = 'block';
-            } catch (e) {
-                alert("Invalid Secret Key or Corrupted Data!");
-            }
+            } catch (e) { alert("Wrong Password!"); }
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('outputCode');
+            output.select();
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+        }
+
+        function clearAll() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('outputCode').value = '';
+            document.getElementById('key').value = '';
+            document.getElementById('resultWrapper').style.display = 'none';
         }
     </script>
 </body>
