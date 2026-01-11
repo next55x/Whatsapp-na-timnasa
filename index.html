@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimnasaTech obfuscate open&close</title>
+    <title>TimnasaTech | Obfuscate Open & Close</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
@@ -17,6 +17,7 @@
         }
 
         body {
+            /* Your custom wallpaper */
             background: url('https://files.catbox.moe/x4x5xn.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
@@ -24,74 +25,83 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* Glassmorphism Effect */
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+        /* Glassmorphism Container */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 30px;
-            border-radius: 20px;
+            padding: 40px;
+            border-radius: 25px;
             width: 100%;
-            max-width: 650px;
+            max-width: 700px;
             text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             color: white;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
+            letter-spacing: 3px;
             margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(to right, #00d2ff, #9d50bb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
         }
 
-        .owner-email {
-            color: #ffd700;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
+        .subtitle {
+            font-size: 0.85rem;
+            color: #ffd700; /* Gold for uniqueness */
+            margin-bottom: 30px;
             display: block;
+            font-weight: 300;
         }
 
         textarea {
             width: 100%;
-            height: 140px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
             padding: 15px;
             color: #00ffcc;
             font-family: 'Courier New', monospace;
-            font-size: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             outline: none;
             transition: 0.3s;
         }
 
         textarea:focus {
             border-color: #00d2ff;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
 
         input[type="password"] {
             width: 100%;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 12px;
             border: none;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             background: rgba(255, 255, 255, 0.9);
-            color: #333;
+            color: #1a1a1a;
             font-weight: bold;
             text-align: center;
+            font-size: 1rem;
         }
 
-        .buttons {
+        .button-group {
             display: flex;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .btn {
@@ -101,127 +111,120 @@
             border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
-            text-transform: uppercase;
-            transition: 0.3s ease;
+            letter-spacing: 1px;
+            transition: 0.4s;
             color: white;
+            text-transform: uppercase;
         }
 
-        .btn-encrypt {
-            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
-        }
-
-        .btn-decrypt {
-            background: linear-gradient(45deg, #9d50bb, #6e48aa);
-        }
+        .btn-encrypt { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+        .btn-decrypt { background: linear-gradient(45deg, #f093fb, #f5576c); }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            filter: brightness(1.1);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
         }
 
-        .hidden-result {
+        #resultWrapper {
             display: none;
-            animation: fadeIn 0.8s forwards;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .contact-box {
-            margin-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
         }
 
-        .contact-link {
+        .contact-btn {
+            display: inline-block;
             text-decoration: none;
             color: white;
-            font-size: 0.85rem;
-            background: rgba(37, 211, 102, 0.2);
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 50px;
-            border: 1px solid #25d366;
+            font-size: 0.8rem;
+            margin: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: 0.3s;
         }
 
-        .contact-link:hover {
-            background: #25d366;
-            color: black;
-        }
+        .whatsapp { background: rgba(37, 211, 102, 0.2); border-color: #25d366; }
+        .whatsapp:hover { background: #25d366; color: black; }
+
+        .email { background: rgba(0, 210, 255, 0.2); border-color: #00d2ff; }
+        .email:hover { background: #00d2ff; color: black; }
 
     </style>
 </head>
 <body>
 
-    <audio id="myMusic" loop>
+    <audio id="audioPlayer" loop>
         <source src="https://files.catbox.moe/lqx6sp.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="container">
-        <h1>TimnasaTech</h1>
-        <span class="owner-email">timoth@timnasa.com</span>
+    <div class="glass-panel">
+        <h1>TIMNASA TECH</h1>
+        <span class="subtitle">timoth@timnasa.com | Obfuscate Open & Close</span>
 
-        <textarea id="mainInput" placeholder="Paste code yako hapa..."></textarea>
+        <textarea id="inputCode" placeholder="Paste your code or text here..."></textarea>
         
-        <input type="password" id="passKey" placeholder="Weka Password ya Siri">
+        <input type="password" id="key" placeholder="Enter Secret Encryption Key">
         
-        <div class="buttons">
-            <button onclick="handleAction('encrypt')" class="btn btn-encrypt">Funga (Encrypt)</button>
-            <button onclick="handleAction('decrypt')" class="btn btn-decrypt">Fungua (Decrypt)</button>
+        <div class="button-group">
+            <button onclick="process('encrypt')" class="btn btn-encrypt">Encrypt</button>
+            <button onclick="process('decrypt')" class="btn btn-decrypt">Decrypt</button>
         </div>
 
-        <div id="resultSection" class="hidden-result">
-            <h3 style="margin-bottom:10px; font-size: 0.9rem; color: #aaa;">MATOKEO:</h3>
-            <textarea id="resultOutput" readonly></textarea>
+        <div id="resultWrapper">
+            <p style="text-align:left; font-size: 0.8rem; color: #00ffcc; margin-bottom: 5px;">OUTPUT:</p>
+            <textarea id="outputCode" readonly></textarea>
         </div>
 
-        <div class="contact-box">
-            <a href="https://wa.me/255784766591" target="_blank" class="contact-link">WhatsApp Owner</a>
-            <a href="mailto:timoth@timnasa.com" class="contact-link" style="border-color: #00d2ff; background: rgba(0,210,255,0.1);">Email</a>
+        <div class="footer">
+            <a href="https://wa.me/255784766591" target="_blank" class="contact-btn whatsapp">Chat on WhatsApp</a>
+            <a href="mailto:timoth@timnasa.com" class="contact-btn email">Contact Owner</a>
         </div>
     </div>
 
     <script>
-        const audio = document.getElementById('myMusic');
-        const resultSection = document.getElementById('resultSection');
+        const music = document.getElementById('audioPlayer');
 
-        function handleAction(type) {
-            // Anza kucheza muziki
-            audio.play().catch(e => console.log("Music needs interaction"));
+        function process(mode) {
+            // Start Music on click
+            music.play().catch(() => console.log("User interaction required for audio"));
 
-            const input = document.getElementById('mainInput').value;
-            const key = document.getElementById('passKey').value;
-            const outputField = document.getElementById('resultOutput');
+            const text = document.getElementById('inputCode').value;
+            const pass = document.getElementById('key').value;
+            const output = document.getElementById('outputCode');
+            const wrapper = document.getElementById('resultWrapper');
 
-            if (!input || !key) {
-                alert("Tafadhali jaza kodi na password!");
+            if (!text || !pass) {
+                alert("Please fill in both the code and the secret key!");
                 return;
             }
 
-            if (type === 'encrypt') {
-                const encrypted = CryptoJS.AES.encrypt(input, key).toString();
-                outputField.value = encrypted;
-            } else {
-                try {
-                    const bytes = CryptoJS.AES.decrypt(input, key);
+            try {
+                if (mode === 'encrypt') {
+                    const encrypted = CryptoJS.AES.encrypt(text, pass).toString();
+                    output.value = encrypted;
+                } else {
+                    const bytes = CryptoJS.AES.decrypt(text, pass);
                     const decrypted = bytes.toString(CryptoJS.enc.Utf8);
                     
                     if (!decrypted) throw new Error();
-                    outputField.value = decrypted;
-                } catch (e) {
-                    alert("Password siyo sahihi au code imeharibika!");
-                    return;
+                    output.value = decrypted;
                 }
+                
+                wrapper.style.display = 'block';
+            } catch (e) {
+                alert("Invalid Secret Key or Corrupted Data!");
             }
-
-            // Onyesha sehemu ya matokeo kwa animation
-            resultSection.style.display = 'block';
         }
     </script>
 </body>
